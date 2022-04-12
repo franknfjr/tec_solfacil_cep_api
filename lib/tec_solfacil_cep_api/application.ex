@@ -15,9 +15,9 @@ defmodule TecSolfacilCepApi.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: TecSolfacilCepApi.PubSub},
       # Start the Endpoint (http/https)
-      TecSolfacilCepApiWeb.Endpoint
+      TecSolfacilCepApiWeb.Endpoint,
       # Start a worker by calling: TecSolfacilCepApi.Worker.start_link(arg)
-      # {TecSolfacilCepApi.Worker, arg}
+      {Finch, name: :tec_solfacil_cep_api}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
