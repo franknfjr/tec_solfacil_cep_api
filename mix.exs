@@ -42,7 +42,9 @@ defmodule TecSolfacilCepApi.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:finch, "~> 0.10"}
+      {:finch, "~> 0.10"},
+      {:guardian, "~> 2.0"},
+      {:bcrypt_elixir, "~> 2.0"}
     ]
   end
 

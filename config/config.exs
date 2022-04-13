@@ -25,6 +25,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Config guardian
+config :tec_solfacil_cep_api, TecSolfacilCepApi.Guardian,
+  issuer: "tec_solfacil_cep_api",
+  secret_key: "XWlEqJwR/sgyhuYPPkBGXnviKjz3KQ4gXBs+igUbM7NNDV9OgMqtja89xfoAnx5C"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
