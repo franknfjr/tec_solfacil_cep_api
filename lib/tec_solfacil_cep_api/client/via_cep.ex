@@ -4,9 +4,9 @@ defmodule TecSolfacilCepApi.Client.ViaCep do
 
   @data ~w(cep logradouro complemento bairro localidade uf ibge ddd siafi)
 
-  def get_adress(zip) do
+  def get_address(cep) do
     :get
-    |> Finch.build(@base_url <> "#{zip}" <> "/json/")
+    |> Finch.build(@base_url <> "#{cep}" <> "/json/")
     |> Finch.request(@tec_solfacil_cep_api)
     |> handle_response
   end
@@ -26,7 +26,7 @@ defmodule TecSolfacilCepApi.Client.ViaCep do
         {:ok, result}
 
       _error ->
-        {:error, :invalid_zip}
+        {:error, :invalid_cep}
     end
   end
 end
