@@ -5,7 +5,7 @@ defmodule TecSolfacilCepApi.Repo.Migrations.CreateAddressesTable do
     create table(:addresses) do
       add :cep, :string
       add :logradouro, :string
-      add :complemento, :string
+      add :complemento, :string, null: true
       add :bairro, :string
       add :localidade, :string
       add :uf, :string

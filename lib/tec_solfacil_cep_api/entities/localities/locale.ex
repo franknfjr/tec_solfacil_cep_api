@@ -4,6 +4,7 @@ defmodule TecSolfacilCepApi.Entities.Localities.Locale do
   import Ecto.Changeset
 
   @fields ~w(cep logradouro complemento bairro localidade uf ibge ddd siafi)a
+  @required_fields ~w(cep logradouro bairro localidade uf ibge ddd siafi)a
 
   schema "addresses" do
     field :cep, :string
@@ -23,7 +24,7 @@ defmodule TecSolfacilCepApi.Entities.Localities.Locale do
   def changeset(locale, attrs) do
     locale
     |> cast(attrs, @fields)
-    |> validate_required(@fields)
+    |> validate_required(@required_fields)
     |> unique_constraint(:cep)
   end
 end
