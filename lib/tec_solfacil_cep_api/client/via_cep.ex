@@ -22,11 +22,21 @@ defmodule TecSolfacilCepApi.Client.ViaCep do
         result =
           decoded_body
           |> Map.take(@data)
+          |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
+          |> format_cep()
 
         {:ok, result}
 
       _error ->
         {:error, :invalid_cep}
     end
+  end
+
+  defp format_cep(result) do
+    formated_cep =
+      result.cep
+      |> String.replace("-", "")
+
+    %{result | cep: formated_cep}
   end
 end
