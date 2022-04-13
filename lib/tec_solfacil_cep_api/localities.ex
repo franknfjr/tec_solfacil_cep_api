@@ -6,6 +6,7 @@ defmodule TecSolfacilCepApi.Localities do
   import Ecto.Query, warn: false
   alias TecSolfacilCepApi.Repo
 
+  alias TecSolfacilCepApi.Client.ViaCep
   alias TecSolfacilCepApi.Entities.Localities.Locale
 
   @doc """
@@ -34,9 +35,12 @@ defmodule TecSolfacilCepApi.Localities do
 
   """
   def get_locale_by_cep(cep) when is_binary(cep) do
-    case Repo.get_by(Locale, cep: cep) do
-      nil ->
-        {:error, :not_found}
+    with nil <- Repo.get_by(Locale, cep: cep |> String.replace("-", "")),
+         {:ok, result} <- ViaCep.get_address(cep |> String.replace("-", "")) do
+      create_locale_address(result)
+    else
+      {:error, reason} ->
+        {:error, reason}
 
       locale ->
         {:ok, locale}
