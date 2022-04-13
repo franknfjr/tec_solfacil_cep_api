@@ -13,7 +13,7 @@ defmodule TecSolfacilCepApi.Client.ViaCep do
 
   defp handle_response(request) do
     case request do
-      {:ok, %{body: "{\n  \"erro\": true\n}", status: 200}} ->
+      {:ok, %{body: "{\n  \"erro\": \"true\"\n}", status: 200}} ->
         {:error, :not_found}
 
       {:ok, %{body: body, status: 200}} ->
