@@ -6,21 +6,9 @@ defmodule TecSolfacilCepApi.Localities do
   import Ecto.Query, warn: false
   alias TecSolfacilCepApi.Repo
 
-  alias TecSolfacilCepApi.Client.ViaCep
+  alias TecSolfacilCepApi.Clients.ViaCep
   alias TecSolfacilCepApi.Entities.Localities.Locale
-
-  @doc """
-  Returns the list of adresses.
-
-  ## Examples
-
-      iex> list_adresses()
-      [%Locale{}, ...]
-
-  """
-  def list_adresses do
-    Repo.all(Locale)
-  end
+  alias TecSolfacilCepApi.Workers.CSVWorker
 
   @doc """
   Get a locale by cep
@@ -63,5 +51,11 @@ defmodule TecSolfacilCepApi.Localities do
     %Locale{}
     |> Locale.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def build_csv_addresses(email) do
+    %{email: email}
+    |> CSVWorker.new()
+    |> Oban.insert()
   end
 end
