@@ -30,6 +30,12 @@ config :tec_solfacil_cep_api, TecSolfacilCepApi.Guardian,
   issuer: "tec_solfacil_cep_api",
   secret_key: "XWlEqJwR/sgyhuYPPkBGXnviKjz3KQ4gXBs+igUbM7NNDV9OgMqtja89xfoAnx5C"
 
+# Swoosh config
+config :tec_solfacil_cep_api, TecSolfacilCepApi.Mailer, adapter: Swoosh.Adapters.Local
+
+# Swoosh API client is needed for adapters other than SMTP.
+config :swoosh, :api_client, false
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
