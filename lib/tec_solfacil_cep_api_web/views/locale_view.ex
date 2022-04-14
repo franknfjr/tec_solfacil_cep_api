@@ -2,10 +2,6 @@ defmodule TecSolfacilCepApiWeb.LocaleView do
   use TecSolfacilCepApiWeb, :view
   alias TecSolfacilCepApiWeb.LocaleView
 
-  def render("index.json", %{adresses: adresses}) do
-    %{data: render_many(adresses, LocaleView, "locale.json")}
-  end
-
   def render("show.json", %{locale: locale}) do
     %{data: render_one(locale, LocaleView, "locale.json")}
   end
@@ -22,5 +18,9 @@ defmodule TecSolfacilCepApiWeb.LocaleView do
       ddd: locale.ddd,
       siafi: locale.siafi
     }
+  end
+
+  def render("csv.json", _params) do
+    %{detail: "Accepted", status: 202}
   end
 end
