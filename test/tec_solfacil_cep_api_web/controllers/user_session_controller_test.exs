@@ -3,10 +3,6 @@ defmodule TecSolfacilCepApiWeb.UserSessionControllerTest do
 
   import TecSolfacilCepApi.AccountsFixtures
 
-  # describe "sign_up/2" do
-  # TODO
-  # end
-
   describe "log_in/2" do
     test "creates a user session and provides a token", %{conn: conn} do
       user_fixture()
@@ -26,7 +22,7 @@ defmodule TecSolfacilCepApiWeb.UserSessionControllerTest do
           })
         )
 
-      # assert response(conn, 401)
+      assert conn.status == 401
     end
   end
 end

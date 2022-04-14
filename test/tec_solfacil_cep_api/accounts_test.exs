@@ -56,7 +56,7 @@ defmodule TecSolfacilCepApi.AccountsTest do
     test "returns the user if the email and password are valid" do
       %{id: id} = user = user_fixture()
 
-      assert {:ok, %User{id: ^id}} =
+      assert %User{id: ^id} =
                Accounts.get_user_by_email_and_password(user.email, valid_user_password())
     end
   end
