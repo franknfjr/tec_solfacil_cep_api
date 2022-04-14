@@ -28,7 +28,7 @@ defmodule TecSolfacilCepApi.Clients.ViaCep do
         {:ok, result}
 
       _error ->
-        {:error, :invalid_cep}
+        {:error, :bad_request}
     end
   end
 

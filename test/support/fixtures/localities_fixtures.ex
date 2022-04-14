@@ -3,6 +3,8 @@ defmodule TecSolfacilCepApi.LocalitiesFixtures do
   This module defines test helpers for creating
   entities via the `TecSolfacilCepApi.Localities` context.
   """
+  def cep_valid, do: "67145037"
+  def cep_invalid, do: "67000000"
 
   def address_data do
     %{
