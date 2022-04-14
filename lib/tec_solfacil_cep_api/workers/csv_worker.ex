@@ -2,8 +2,8 @@ defmodule TecSolfacilCepApi.Workers.CSVWorker do
   @moduledoc false
   use Oban.Worker, queue: :file_csv
   alias TecSolfacilCepApi.EmailSender
-  alias TecSolfacilCepApi.Repo
   alias TecSolfacilCepApi.Entities.Localities.Locale
+  alias TecSolfacilCepApi.Repo
 
   @impl Oban.Worker
   def perform(%Oban.Job{args: %{"email" => email}}) do
@@ -17,6 +17,7 @@ defmodule TecSolfacilCepApi.Workers.CSVWorker do
   defp build_csv do
     Locale
     |> Repo.all()
-    #implementing
+
+    # implementing
   end
 end
