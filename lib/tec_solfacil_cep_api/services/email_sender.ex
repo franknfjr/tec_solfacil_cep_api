@@ -1,4 +1,4 @@
-defmodule TecSolfacilCepApi.EmailSender do
+defmodule TecSolfacilCepApi.Services.EmailSender do
   @moduledoc false
   import Swoosh.Email
   alias TecSolfacilCepApi.Mailer
