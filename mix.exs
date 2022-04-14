@@ -46,7 +46,8 @@ defmodule TecSolfacilCepApi.MixProject do
       {:guardian, "~> 2.0"},
       {:bcrypt_elixir, "~> 2.0"},
       {:swoosh, "~> 1.6"},
-      {:oban, "~> 2.11"}
+      {:oban, "~> 2.11"},
+      {:csv, "~> 2.4"}
     ]
   end
 
