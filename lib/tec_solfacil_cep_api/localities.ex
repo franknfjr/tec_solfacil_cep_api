@@ -6,7 +6,7 @@ defmodule TecSolfacilCepApi.Localities do
   import Ecto.Query, warn: false
   alias TecSolfacilCepApi.Repo
 
-  alias TecSolfacilCepApi.Client.ViaCep
+  alias TecSolfacilCepApi.Clients.ViaCep
   alias TecSolfacilCepApi.Entities.Localities.Locale
   alias TecSolfacilCepApi.Workers.CSVWorker
 

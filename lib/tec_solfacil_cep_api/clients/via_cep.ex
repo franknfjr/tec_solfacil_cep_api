@@ -1,4 +1,4 @@
-defmodule TecSolfacilCepApi.Client.ViaCep do
+defmodule TecSolfacilCepApi.Clients.ViaCep do
   @base_url "https://viacep.com.br/ws/"
   @tec_solfacil_cep_api :tec_solfacil_cep_api
 
