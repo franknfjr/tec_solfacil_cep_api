@@ -23,8 +23,8 @@ defmodule TecSolfacilCepApiWeb.Router do
   scope "/api/v1", TecSolfacilCepApiWeb do
     pipe_through [:api, :auth, :ensure_auth]
 
-    get "/addresses/:cep", LocaleController, :show
     get "/addresses/send_csv", LocaleController, :send_csv
+    get "/addresses/:cep", LocaleController, :show
   end
 
   if Mix.env() == :dev do
