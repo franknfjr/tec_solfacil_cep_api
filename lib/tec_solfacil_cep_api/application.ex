@@ -17,13 +17,20 @@ defmodule TecSolfacilCepApi.Application do
       # Start the Endpoint (http/https)
       TecSolfacilCepApiWeb.Endpoint,
       # Start a worker by calling: TecSolfacilCepApi.Worker.start_link(arg)
-      {Finch, name: :tec_solfacil_cep_api}
+      {Finch, name: :tec_solfacil_cep_api},
+      # Start the Oban system
+      {Oban, oban_config()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: TecSolfacilCepApi.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  # Conditionally disable queues or plugins here.
+  defp oban_config do
+    Application.fetch_env!(:tec_solfacil_cep_api, Oban)
   end
 
   # Tell Phoenix to update the endpoint configuration

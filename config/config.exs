@@ -36,6 +36,12 @@ config :tec_solfacil_cep_api, TecSolfacilCepApi.Mailer, adapter: Swoosh.Adapters
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
+# Oban config
+config :tec_solfacil_cep_api, Oban,
+  repo: TecSolfacilCepApi.Repo,
+  plugins: [Oban.Plugins.Pruner],
+  queues: [default: 10, file_csv: 10]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
