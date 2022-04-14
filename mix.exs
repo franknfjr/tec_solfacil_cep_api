@@ -44,7 +44,8 @@ defmodule TecSolfacilCepApi.MixProject do
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:finch, "~> 0.10"},
       {:guardian, "~> 2.0"},
-      {:bcrypt_elixir, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.0"},
+      {:swoosh, "~> 1.6"}
     ]
   end
 

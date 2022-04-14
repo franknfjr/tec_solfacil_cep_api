@@ -27,4 +27,12 @@ defmodule TecSolfacilCepApiWeb.Router do
     get "/addresses/:cep", LocaleController, :show
     post "/addresses", LocaleController, :create
   end
+
+  if Mix.env() == :dev do
+    scope "/dev" do
+      pipe_through [:api]
+
+      forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+  end
 end
