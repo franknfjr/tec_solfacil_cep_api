@@ -53,6 +53,15 @@ defmodule TecSolfacilCepApi.Localities do
     |> Repo.insert()
   end
 
+  @doc """
+  Create a worker.
+
+  ## Examples
+
+      iex> build_csv_addresses("email@example.com")
+      {:ok, %Job{}}
+
+  """
   def build_csv_addresses(email) do
     %{email: email}
     |> CSVWorker.new()
