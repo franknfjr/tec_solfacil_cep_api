@@ -1,9 +1,9 @@
 defmodule TecSolfacilCepApi.Workers.CSVWorker do
   @moduledoc false
   use Oban.Worker, queue: :file_csv
-  alias TecSolfacilCepApi.Services.EmailSender
   alias TecSolfacilCepApi.Entities.Localities.Locale
   alias TecSolfacilCepApi.Repo
+  alias TecSolfacilCepApi.Services.EmailSender
 
   @fields ~w(cep logradouro complemento bairro localidade uf ibge ddd siafi)a
 
@@ -23,7 +23,7 @@ defmodule TecSolfacilCepApi.Workers.CSVWorker do
       record
       |> Map.from_struct()
       |> Map.take([])
-      |> Map.merge( Map.take(record, @fields) )
+      |> Map.merge(Map.take(record, @fields))
       |> Map.values()
     end)
     |> CSV.encode()
