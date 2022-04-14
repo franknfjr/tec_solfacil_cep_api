@@ -1,0 +1,27 @@
+defmodule TecSolfacilCepApi.LocalitiesFixtures do
+  @moduledoc """
+  This module defines test helpers for creating
+  entities via the `TecSolfacilCepApi.Localities` context.
+  """
+
+  @address_data %{
+    "bairro" => "Maguari",
+    "cep" => "67145037",
+    "complemento" => "(Cj PAAR)",
+    "ddd" => "91",
+    "ibge" => "1500800",
+    "localidade" => "Ananindeua",
+    "logradouro" => "Quadra Cem",
+    "siafi" => "0415",
+    "uf" => "PA"
+  }
+
+  def locale_fixture(attrs \\ %{}) do
+    {:ok, locale} =
+      attrs
+      |> Enum.into(@address_data)
+      |> TecSolfacilCepApi.Localities.create_locale_address()
+
+    locale
+  end
+end

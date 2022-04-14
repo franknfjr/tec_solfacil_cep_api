@@ -25,3 +25,9 @@ config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Oban Test
+config :tec_solfacil_cep_api, Oban, queues: false, plugins: false
+
+#  Swoosh Test
+config :tec_solfacil_cep_api, TecSolfacilCepApi.Mailer, adapter: Swoosh.Adapters.Test

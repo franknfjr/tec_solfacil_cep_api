@@ -21,6 +21,6 @@ defmodule TecSolfacilCepApiWeb.LocaleView do
   end
 
   def render("csv.json", _params) do
-    %{detail: "Accepted", status: 202}
+    %{message: "Accepted", status: 202}
   end
 end
