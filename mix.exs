@@ -1,10 +1,14 @@
 defmodule TecSolfacilCepApi.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/franknfjr/tec_solfacil_cep_api"
+  @version "0.1.0"
+
   def project do
     [
       app: :tec_solfacil_cep_api,
-      version: "0.1.0",
+      version: @version,
+      source_url: @source_url,
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
