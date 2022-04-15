@@ -6,6 +6,8 @@ defmodule TecSolfacilCepApiWeb.UserSessionController do
   alias TecSolfacilCepApi.Guardian
   alias TecSolfacilCepApi.Repo
 
+  action_fallback TecSolfacilCepApiWeb.FallbackController
+
   def sign_up(conn, %{"user" => user_params}) do
     changeset = User.changeset(%User{}, user_params)
 
@@ -15,22 +17,25 @@ defmodule TecSolfacilCepApiWeb.UserSessionController do
         |> put_status(:created)
         |> render("sign_up.json", user: user)
 
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
-        |> put_status(:unprocessable_entity)
-        |> render(TecSolfacilCepApiWeb.ChangesetView, "error.json", changeset: changeset)
+        |> put_status(:forbidden)
+        |> put_view(TecSolfacilCepApiWeb.ErrorView)
+        |> render(:"403")
     end
   end
 
   def log_in(conn, %{"session" => %{"email" => email, "password" => password}}) do
-    {:ok, user} = Accounts.get_user_by_email_and_password(email, password)
+    if user = Accounts.get_user_by_email_and_password(email, password) do
+      {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user)
 
-    case user do
-      user ->
-        {:ok, jwt, _full_claims} = Guardian.encode_and_sign(user)
-
-        conn
-        |> render("log_in.json", user: user, jwt: jwt)
+      conn
+      |> render("log_in.json", user: user, jwt: jwt)
+    else
+      conn
+      |> put_status(:unauthorized)
+      |> put_view(TecSolfacilCepApiWeb.ErrorView)
+      |> render(:"401")
     end
   end
 end
